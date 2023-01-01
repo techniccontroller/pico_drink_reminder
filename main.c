@@ -2,6 +2,6 @@
 
 int main(void)
 {
-	drink_reminder();
+    drink_reminder();
     return 0;
 }

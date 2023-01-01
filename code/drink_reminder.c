@@ -30,7 +30,7 @@
 #define DRINK_DELAY 1800000
 
 enum {UP=-10, DOWN=+10, STAY=0} typedef PlayerMovement;
-enum {IDLE, PONG, PONG_OVER, DRINK_INIT, DRINK_PULS} typedef State;
+enum {IDLE, PONG, PONG_OVER, DRINK_INIT, DRINK_PULSE} typedef State;
 
 
 struct{
@@ -377,13 +377,13 @@ int drink_reminder(void)
                 }
                 glas2_image = !glas2_image;
                 LCD_1IN3_Display(BlackImage);
-                state = DRINK_PULS;
+                state = DRINK_PULSE;
                 start_reminder_time = timer_func_millis();
                 value = 0;
                 dvalue = +5;
                 break;
 
-            case DRINK_PULS:
+            case DRINK_PULSE:
                 // drink reminder pulse state
 
                 if(timer_func_millis() - last_pwm_update > 20){

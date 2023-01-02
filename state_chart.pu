@@ -1,0 +1,24 @@
+@startuml State chart
+
+'!theme carbon-gray
+!theme cerulean-outline
+'!theme mars
+'!theme materia-outline
+
+[*] --> IDLE
+IDLE : do nothing (you could sleep)
+PONG: run the pong game
+PONG_OVER: display end game screen
+DRINK_INIT: display drink reminder image
+DRINK_PULSE: pulse the backlight
+
+IDLE --> DRINK_INIT : 30min
+IDLE -> PONG: 'ctrl'
+PONG -> IDLE: 'left'
+PONG -left-> PONG: 'up' | 'down'
+PONG --> PONG_OVER: score > 25 | game_over
+PONG_OVER -> IDLE: 5sec
+DRINK_INIT -> DRINK_PULSE
+DRINK_PULSE -> IDLE: 5sec 
+
+@enduml
